@@ -1,29 +1,23 @@
 import { useEffect, useState } from "react";
 
 import { GifItem } from "../GifItem/GifItem";
+import { Loader } from '../loader/Loader';
 import { getGifs } from "../../core/helpers/getGifs";
 import { iCategory } from "../../core/interfaces/iCategory.interface";
+import { useFetchGifs } from "../../hooks/useFetchGifs";
 
 export const GifGrid = ({ category }) => {
-  const [images, setImages] = useState([]);
+  const { images, isLoading} = useFetchGifs( category );
 
-  const getImages = async () => {
-    const newImages = await getGifs(category);
-    setImages(newImages);
-  };
-
-  useEffect(() => {
-    getImages();
-
-    return () => {};
-  }, []);
+  
 
   return (
     <div>
+      <Loader isLoading={isLoading}/>
       <h3 className="text-xl font-semibold">{category.name}</h3>
-      <div className="flex flex-wrap gap-2 justify-center">
-        {images.map(({id, title, url}) => (
-            <GifItem key={ id } title={title} url={url}></GifItem>
+      <div className="flex flex-wrap gap-3 justify-center">
+        {images.map((image) => (
+          <GifItem key={image.id} {...image}></GifItem>
         ))}
       </div>
     </div>

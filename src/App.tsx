@@ -4,12 +4,12 @@ import SearchCategory from './components/SearchCategory/SearchCategory';
 import { iCategory } from './core/interfaces/iCategory.interface';
 import { useState } from "react";
 function App() {
-  const [categories, setCategories] = useState<iCategory[]>([{uuid: crypto.randomUUID(),name: "One Punch"}]);
+  const [categories, setCategories] = useState<iCategory[]>([{uuid: crypto.randomUUID(),name: "gif"}]);
 
   const onAddCategory = (newCategory: iCategory) => {
     if (categories.some(category => category.name === newCategory.name)) return;
     
-    setCategories([...categories, newCategory])
+    setCategories([newCategory,...categories])
   }
 
   return (
