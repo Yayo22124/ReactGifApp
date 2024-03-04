@@ -2,7 +2,7 @@ import { FormEvent, useState } from "react"
 
 import { iCategory } from "../../core/interfaces/iCategory.interface";
 
-function SearchCategory({ onNewCategory }) {
+export function SearchCategory({ onNewCategory }) {
     const [inputValue, setInputValue] = useState<string>('')
 
     const onInputChange = ({target}: FormEvent<HTMLInputElement>) => {
@@ -29,5 +29,3 @@ function SearchCategory({ onNewCategory }) {
     </form>
   )
 }
-
-export default SearchCategory

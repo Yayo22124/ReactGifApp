@@ -1,6 +1,5 @@
-import { GifGrid } from "./components/GifGrid/GifGrid";
-import { Header } from "./components/header/header";
-import SearchCategory from './components/SearchCategory/SearchCategory';
+import { GifGrid, Header, SearchCategory } from "./components";
+
 import { iCategory } from './core/interfaces/iCategory.interface';
 import { useState } from "react";
 function App() {
